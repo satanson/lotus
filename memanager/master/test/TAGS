@@ -1,0 +1,245 @@
+
+gen-cpp/trans_blockInfo.cpp,859
+namespace memanager 9,168
+uint32_t trans_blockInfo_trans_blockInfo_args::read(memanager::trans_blockInfo_trans_blockInfo_args::read11,191
+uint32_t trans_blockInfo_trans_blockInfo_args::write(63,1470
+uint32_t trans_blockInfo_trans_blockInfo_pargs::write(84,2234
+uint32_t trans_blockInfo_trans_blockInfo_result::read(105,3015
+uint32_t trans_blockInfo_trans_blockInfo_result::write(132,3591
+uint32_t trans_blockInfo_trans_blockInfo_presult::read(143,3889
+void trans_blockInfoClient::trans_blockInfo(170,4466
+void trans_blockInfoClient::send_trans_blockInfo(176,4618
+void trans_blockInfoClient::recv_trans_blockInfo(190,5031
+bool trans_blockInfoProcessor::dispatchCall(223,5951
+void trans_blockInfoProcessor::process_trans_blockInfo(242,6815
+::boost::shared_ptr< ::apache::thrift::TProcessor > trans_blockInfoProcessorFactory::getProcessor(295,8719
+
+gen-cpp/DistBlock_constants.h,98
+#define DistBlock_CONSTANTS_H8,168
+class DistBlockConstants 14,252
+  DistBlockConstants(16,288
+
+gen-cpp/trans_block_info.h,5659
+#define trans_block_info_H8,165
+class trans_block_infoIf 15,285
+  virtual ~trans_block_infoIf(17,321
+class trans_block_infoIfFactory 21,439
+  typedef trans_block_infoIf Handler;trans_block_infoIfFactory::Handler23,482
+  virtual ~trans_block_infoIfFactory(trans_block_infoIfFactory::~trans_block_infoIfFactory25,521
+class trans_block_infoIfSingletonFactory 31,735
+  trans_block_infoIfSingletonFactory(trans_block_infoIfSingletonFactory::trans_block_infoIfSingletonFactory33,830
+  virtual ~trans_block_infoIfSingletonFactory(trans_block_infoIfSingletonFactory::~trans_block_infoIfSingletonFactory34,938
+  virtual trans_block_infoIf* getHandler(trans_block_infoIfSingletonFactory::getHandler36,990
+  virtual void releaseHandler(trans_block_infoIfSingletonFactory::releaseHandler39,1104
+  boost::shared_ptr<trans_block_infoIf> iface_;trans_block_infoIfSingletonFactory::iface_42,1185
+class trans_block_infoNull 45,1237
+  virtual ~trans_block_infoNull(trans_block_infoNull::~trans_block_infoNull47,1311
+  void trans_block_info(trans_block_infoNull::trans_block_info48,1348
+typedef struct _trans_block_info_trans_block_info_args__isset 53,1442
+  _trans_block_info_trans_block_info_args__isset(_trans_block_info_trans_block_info_args__isset::_trans_block_info_trans_block_info_args__isset54,1506
+  bool blockList;_trans_block_info_trans_block_info_args__isset::blockList55,1579
+} _trans_block_info_trans_block_info_args__isset;56,1597
+class trans_block_info_trans_block_info_args 58,1648
+  trans_block_info_trans_block_info_args(trans_block_info_trans_block_info_args::trans_block_info_trans_block_info_args61,1705
+  virtual ~trans_block_info_trans_block_info_args(trans_block_info_trans_block_info_args::~trans_block_info_trans_block_info_args64,1755
+  std::vector<blockInfo>  blockList;trans_block_info_trans_block_info_args::blockList66,1819
+  _trans_block_info_trans_block_info_args__isset __isset;trans_block_info_trans_block_info_args::__isset68,1857
+  void __set_blockList(trans_block_info_trans_block_info_args::__set_blockList70,1916
+  bool operator == trans_block_info_trans_block_info_args::operator ==74,2003
+  bool operator != trans_block_info_trans_block_info_args::operator !=80,2165
+class trans_block_info_trans_block_info_pargs 92,2492
+  virtual ~trans_block_info_trans_block_info_pargs(trans_block_info_trans_block_info_pargs::~trans_block_info_trans_block_info_pargs96,2551
+  const std::vector<blockInfo> * blockList;trans_block_info_trans_block_info_pargs::blockList98,2616
+class trans_block_info_trans_block_info_result 105,2737
+  trans_block_info_trans_block_info_result(trans_block_info_trans_block_info_result::trans_block_info_trans_block_info_result108,2796
+  virtual ~trans_block_info_trans_block_info_result(trans_block_info_trans_block_info_result::~trans_block_info_trans_block_info_result111,2848
+  bool operator == trans_block_info_trans_block_info_result::operator ==114,2915
+  bool operator != trans_block_info_trans_block_info_result::operator !=118,3026
+class trans_block_info_trans_block_info_presult 130,3357
+  virtual ~trans_block_info_trans_block_info_presult(trans_block_info_trans_block_info_presult::~trans_block_info_trans_block_info_presult134,3418
+class trans_block_infoClient 141,3554
+  trans_block_infoClient(trans_block_infoClient::trans_block_infoClient143,3630
+  trans_block_infoClient(trans_block_infoClient::trans_block_infoClient149,3814
+  boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getInputProtocol(trans_block_infoClient::getInputProtocol155,4068
+  boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol(trans_block_infoClient::getOutputProtocol158,4173
+  boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;trans_block_infoClient::piprot_165,4462
+  boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;trans_block_infoClient::poprot_166,4531
+  ::apache::thrift::protocol::TProtocol* iprot_;trans_block_infoClient::iprot_167,4600
+  ::apache::thrift::protocol::TProtocol* oprot_;trans_block_infoClient::oprot_168,4649
+class trans_block_infoProcessor 171,4702
+  boost::shared_ptr<trans_block_infoIf> iface_;trans_block_infoProcessor::iface_173,4794
+  typedef  void (trans_block_infoProcessor::*ProcessFunction)trans_block_infoProcessor::ProcessFunction176,5033
+  typedef std::map<std::string,trans_block_infoProcessor::std::string177,5192
+  typedef std::map<std::string, ProcessFunction> ProcessMap;trans_block_infoProcessor::ProcessMap177,5192
+  ProcessMap processMap_;trans_block_infoProcessor::processMap_178,5253
+  trans_block_infoProcessor(trans_block_infoProcessor::trans_block_infoProcessor181,5447
+  virtual ~trans_block_infoProcessor(trans_block_infoProcessor::~trans_block_infoProcessor186,5639
+class trans_block_infoProcessorFactory 189,5685
+  trans_block_infoProcessorFactory(trans_block_infoProcessorFactory::trans_block_infoProcessorFactory191,5780
+  ::boost::shared_ptr< trans_block_infoIfFactory > handlerFactory_;trans_block_infoProcessorFactory::handlerFactory_197,6063
+class trans_block_infoMultiface 200,6135
+  trans_block_infoMultiface(trans_block_infoMultiface::trans_block_infoMultiface202,6214
+  virtual ~trans_block_infoMultiface(trans_block_infoMultiface::~trans_block_infoMultiface204,6327
+  std::vector<boost::shared_ptr<trans_block_infoIf> > ifaces_;trans_block_infoMultiface::ifaces_206,6381
+  trans_block_infoMultiface(trans_block_infoMultiface::trans_block_infoMultiface207,6444
+  void add(trans_block_infoMultiface::add208,6477
+  void trans_block_info(trans_block_infoMultiface::trans_block_info212,6578
+
+gen-cpp/trans_blockInfo.h,5508
+#define trans_blockInfo_H8,164
+class trans_blockInfoIf 15,283
+  virtual ~trans_blockInfoIf(17,318
+class trans_blockInfoIfFactory 21,434
+  typedef trans_blockInfoIf Handler;trans_blockInfoIfFactory::Handler23,476
+  virtual ~trans_blockInfoIfFactory(trans_blockInfoIfFactory::~trans_blockInfoIfFactory25,514
+class trans_blockInfoIfSingletonFactory 31,725
+  trans_blockInfoIfSingletonFactory(trans_blockInfoIfSingletonFactory::trans_blockInfoIfSingletonFactory33,818
+  virtual ~trans_blockInfoIfSingletonFactory(trans_blockInfoIfSingletonFactory::~trans_blockInfoIfSingletonFactory34,924
+  virtual trans_blockInfoIf* getHandler(trans_blockInfoIfSingletonFactory::getHandler36,975
+  virtual void releaseHandler(trans_blockInfoIfSingletonFactory::releaseHandler39,1088
+  boost::shared_ptr<trans_blockInfoIf> iface_;trans_blockInfoIfSingletonFactory::iface_42,1168
+class trans_blockInfoNull 45,1219
+  virtual ~trans_blockInfoNull(trans_blockInfoNull::~trans_blockInfoNull47,1291
+  void trans_blockInfo(trans_blockInfoNull::trans_blockInfo48,1327
+typedef struct _trans_blockInfo_trans_blockInfo_args__isset 53,1420
+  _trans_blockInfo_trans_blockInfo_args__isset(_trans_blockInfo_trans_blockInfo_args__isset::_trans_blockInfo_trans_blockInfo_args__isset54,1482
+  bool blockList;_trans_blockInfo_trans_blockInfo_args__isset::blockList55,1553
+} _trans_blockInfo_trans_blockInfo_args__isset;56,1571
+class trans_blockInfo_trans_blockInfo_args 58,1620
+  trans_blockInfo_trans_blockInfo_args(trans_blockInfo_trans_blockInfo_args::trans_blockInfo_trans_blockInfo_args61,1675
+  virtual ~trans_blockInfo_trans_blockInfo_args(trans_blockInfo_trans_blockInfo_args::~trans_blockInfo_trans_blockInfo_args64,1723
+  std::vector<blockInfo>  blockList;trans_blockInfo_trans_blockInfo_args::blockList66,1785
+  _trans_blockInfo_trans_blockInfo_args__isset __isset;trans_blockInfo_trans_blockInfo_args::__isset68,1823
+  void __set_blockList(trans_blockInfo_trans_blockInfo_args::__set_blockList70,1880
+  bool operator == trans_blockInfo_trans_blockInfo_args::operator ==74,1967
+  bool operator != trans_blockInfo_trans_blockInfo_args::operator !=80,2127
+class trans_blockInfo_trans_blockInfo_pargs 92,2450
+  virtual ~trans_blockInfo_trans_blockInfo_pargs(trans_blockInfo_trans_blockInfo_pargs::~trans_blockInfo_trans_blockInfo_pargs96,2507
+  const std::vector<blockInfo> * blockList;trans_blockInfo_trans_blockInfo_pargs::blockList98,2570
+class trans_blockInfo_trans_blockInfo_result 105,2691
+  trans_blockInfo_trans_blockInfo_result(trans_blockInfo_trans_blockInfo_result::trans_blockInfo_trans_blockInfo_result108,2748
+  virtual ~trans_blockInfo_trans_blockInfo_result(trans_blockInfo_trans_blockInfo_result::~trans_blockInfo_trans_blockInfo_result111,2798
+  bool operator == trans_blockInfo_trans_blockInfo_result::operator ==114,2863
+  bool operator != trans_blockInfo_trans_blockInfo_result::operator !=118,2972
+class trans_blockInfo_trans_blockInfo_presult 130,3299
+  virtual ~trans_blockInfo_trans_blockInfo_presult(trans_blockInfo_trans_blockInfo_presult::~trans_blockInfo_trans_blockInfo_presult134,3358
+class trans_blockInfoClient 141,3492
+  trans_blockInfoClient(trans_blockInfoClient::trans_blockInfoClient143,3566
+  trans_blockInfoClient(trans_blockInfoClient::trans_blockInfoClient149,3749
+  boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getInputProtocol(trans_blockInfoClient::getInputProtocol155,4002
+  boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol(trans_blockInfoClient::getOutputProtocol158,4107
+  boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;trans_blockInfoClient::piprot_165,4393
+  boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;trans_blockInfoClient::poprot_166,4462
+  ::apache::thrift::protocol::TProtocol* iprot_;trans_blockInfoClient::iprot_167,4531
+  ::apache::thrift::protocol::TProtocol* oprot_;trans_blockInfoClient::oprot_168,4580
+class trans_blockInfoProcessor 171,4633
+  boost::shared_ptr<trans_blockInfoIf> iface_;trans_blockInfoProcessor::iface_173,4724
+  typedef  void (trans_blockInfoProcessor::*ProcessFunction)trans_blockInfoProcessor::ProcessFunction176,4962
+  typedef std::map<std::string,trans_blockInfoProcessor::std::string177,5120
+  typedef std::map<std::string, ProcessFunction> ProcessMap;trans_blockInfoProcessor::ProcessMap177,5120
+  ProcessMap processMap_;trans_blockInfoProcessor::processMap_178,5181
+  trans_blockInfoProcessor(trans_blockInfoProcessor::trans_blockInfoProcessor181,5374
+  virtual ~trans_blockInfoProcessor(trans_blockInfoProcessor::~trans_blockInfoProcessor186,5561
+class trans_blockInfoProcessorFactory 189,5606
+  trans_blockInfoProcessorFactory(trans_blockInfoProcessorFactory::trans_blockInfoProcessorFactory191,5700
+  ::boost::shared_ptr< trans_blockInfoIfFactory > handlerFactory_;trans_blockInfoProcessorFactory::handlerFactory_197,5981
+class trans_blockInfoMultiface 200,6052
+  trans_blockInfoMultiface(trans_blockInfoMultiface::trans_blockInfoMultiface202,6129
+  virtual ~trans_blockInfoMultiface(trans_blockInfoMultiface::~trans_blockInfoMultiface204,6240
+  std::vector<boost::shared_ptr<trans_blockInfoIf> > ifaces_;trans_blockInfoMultiface::ifaces_206,6293
+  trans_blockInfoMultiface(trans_blockInfoMultiface::trans_blockInfoMultiface207,6355
+  void add(trans_blockInfoMultiface::add208,6387
+  void trans_blockInfo(trans_blockInfoMultiface::trans_blockInfo212,6487
+
+gen-cpp/trans_block_info.cpp,883
+namespace memanager 9,169
+uint32_t trans_block_info_trans_block_info_args::read(memanager::trans_block_info_trans_block_info_args::read11,192
+uint32_t trans_block_info_trans_block_info_args::write(63,1473
+uint32_t trans_block_info_trans_block_info_pargs::write(84,2241
+uint32_t trans_block_info_trans_block_info_result::read(105,3026
+uint32_t trans_block_info_trans_block_info_result::write(132,3604
+uint32_t trans_block_info_trans_block_info_presult::read(143,3906
+void trans_block_infoClient::trans_block_info(170,4485
+void trans_block_infoClient::send_trans_block_info(176,4641
+void trans_block_infoClient::recv_trans_block_info(190,5059
+bool trans_block_infoProcessor::dispatchCall(223,5984
+void trans_block_infoProcessor::process_trans_block_info(242,6849
+::boost::shared_ptr< ::apache::thrift::TProcessor > trans_block_infoProcessorFactory::getProcessor(295,8776
+
+gen-cpp/DistBlock_types.cpp,325
+namespace memanager 11,190
+const char* blockInfo::ascii_fingerprint memanager::blockInfo::ascii_fingerprint13,213
+const uint8_t blockInfo::binary_fingerprint[memanager::blockInfo::binary_fingerprint14,292
+uint32_t blockInfo::read(memanager::blockInfo::read16,426
+uint32_t blockInfo::write(92,2460
+void swap(117,3358
+
+gen-cpp/DistBlock_types.h,744
+#define DistBlock_TYPES_H8,164
+class blockInfo 21,401
+  static const char* ascii_fingerprint;24,429
+  static const uint8_t binary_fingerprint[binary_fingerprint25,510
+  blockInfo(27,646
+  virtual ~blockInfo(30,718
+  std::string filePath;blockInfo::filePath32,753
+  int32_t offset;blockInfo::offset33,777
+  int64_t blockSize;blockInfo::blockSize34,795
+  std::string storeHost;blockInfo::storeHost35,816
+  void __set_filePath(blockInfo::__set_filePath37,842
+  void __set_offset(blockInfo::__set_offset41,915
+  void __set_blockSize(blockInfo::__set_blockSize45,979
+  void __set_storeHost(blockInfo::__set_storeHost49,1049
+  bool operator == blockInfo::operator ==53,1124
+  bool operator != blockInfo::operator !=65,1426
+
+gen-cpp/DistBlock_constants.cpp,212
+namespace memanager 9,172
+const DistBlockConstants g_DistBlock_constants;memanager::g_DistBlock_constants11,195
+DistBlockConstants::DistBlockConstants(memanager::DistBlockConstants::DistBlockConstants13,244
+
+hdfs_test.c,47
+void permission_disp(21,828
+int main(53,1486
+
+trans_file_info.cpp,17
+int main(10,276
+
+dist_file.cpp,836
+using std::string;9,166
+using std::cout;10,185
+using std::cerr;11,202
+using std::endl;12,219
+namespace memanager 14,237
+    class dist_file{memanager::dist_file16,260
+	~dist_file memanager::dist_file::~dist_file19,307
+	int64_t get_blockSize(memanager::dist_file::get_blockSize22,438
+	int32_t get_blockNum(memanager::dist_file::get_blockNum23,485
+	int64_t blockSize;memanager::dist_file::blockSize27,672
+	int32_t blockNum;memanager::dist_file::blockNum28,692
+	Consistent::HashRing<memanager::dist_file::Consistent::HashRing29,711
+	Consistent::HashRing<string, string>* ring;memanager::dist_file::ring29,711
+    dist_file::dist_file(memanager::dist_file::dist_file32,768
+    bool dist_file::init(memanager::dist_file::init41,1026
+    bool dist_file::distribute_file(memanager::dist_file::distribute_file65,1652
+
+consistent.h,1125
+#define CONSISTENT_H8,141
+  class StringifyException24,348
+namespace Consistent53,761
+  class EmptyRingExceptionConsistent::EmptyRingException56,785
+  struct HashConsistent::Hash60,822
+      size_t operator()(Consistent::Hash::operator()63,841
+    class HashRingConsistent::HashRing91,1643
+    typedef std::map<size_t,Consistent::HashRing::size_t94,1680
+    typedef std::map<size_t, Node> NodeMap;Consistent::HashRing::NodeMap94,1680
+    HashRing(Consistent::HashRing::HashRing96,1725
+    HashRing(Consistent::HashRing::HashRing101,1802
+    NodeMap ring_;Consistent::HashRing::ring_111,2048
+    const unsigned int replicas_;Consistent::HashRing::replicas_112,2067
+    struct Hash hash_;Consistent::HashRing::hash_114,2164
+    size_t HashRing<Consistent::HashRing118,2231
+    size_t HashRing<Node, Data>::AddNode(Consistent::AddNode118,2231
+    void HashRing<Consistent::HashRing132,2636
+    void HashRing<Node, Data>::RemoveNode(Consistent::RemoveNode132,2636
+    const Node& HashRing<Consistent::HashRing142,2927
+    const Node& HashRing<Node, Data>::GetNode(Consistent::GetNode142,2927
