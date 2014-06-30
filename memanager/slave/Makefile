@@ -9,11 +9,11 @@ CLI_OBJS=$(patsubst %.cpp,%.o,$(wildcard *.cpp))
 CXX = g++ -std=c++11
 BUILD_DIR=${THRIFT_GEN}/build-in.o
 
-all: slaver
+all: slave
 
 %.o: %.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
-slaver: ${CLI_OBJS}
+slave: ${CLI_OBJS}
 	$(CXX) $^ ${BUILD_DIR} $(LIBHDFS) -lhdfs $(LIBJAVA) -ljvm -o $@ -lthrift
 clean:
-	rm -rf *.o slaver
+	rm -rf *.o slave

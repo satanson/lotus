@@ -82,7 +82,6 @@ namespace memanager {
 
 	try{
 	    transport->open();
-	    cout << "test" << endl;
 	    client.trans_blockInfo(block);
 	    transport->close();
 	} catch (TException& tx){
@@ -95,14 +94,15 @@ namespace memanager {
 	memanager::blockInfo block;
 	block.__set_filePath(readPath);
 	block.__set_blockSize(this->blockSize);
+	cout << "the blockNums of " << readPath << " is " << this->blockNum << endl;
 	for(int i = 0; i < this->blockNum; i++){
 	    string host = ring->GetNode(readPath + std::to_string(i));
-    	    //cout << "Storing " << readPath+std::to_string(i) << " on server " << host << endl;
+    	    cout << "Storing " << readPath+std::to_string(i) << " on server " << host << endl;
 	    block.__set_offset(i);
 	    block.__set_storeHost(host);
 	    std::thread t(&dist_file::trans_blockInfo, this, host, block);
-	    //t.join();
-	    t.detach();
+	    t.join();
+	    //t.detach();
 	}
 
     }
