@@ -1,19 +1,18 @@
 
 HDFS_INCLUDE=${HADOOP_PREFIX}/src/c++/libhdfs
-THRIFT_GEN=../gen-cpp
-CPPFLAGS=-I${HDFS_INCLUDE} -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux -I${THRIFT_GEN}
+CPPFLAGS=-I../gen-cpp -I${HDFS_INCLUDE} -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux 
 LIBHDFS= -L/home/chaoyli/hadoop/c++/Linux-amd64-64/lib
 LIBJAVA= -L${JAVA_HOME}/jre/lib/amd64/server/
 
 SER_OBJS=$(patsubst %.cpp,%.o,$(wildcard *.cpp))
-CXX = g++ -std=c++11
-BUILD_DIR=${THRIFT_GEN}/build-in.o
+CXX = g++ -std=c++11 -Wno-deprecated
+BUILD_DIR=../gen-cpp/build-in.o
 
-all: master
+all: dist_file
 
 %.o: %.cpp
-	$(CXX) $(CPPFLAGS) -c $< -o $@
-master: ${SER_OBJS}
-	$(CXX) $^ ${BUILD_DIR} $(LIBHDFS) -lhdfs $(LIBJAVA) -ljvm -o $@ -lthrift
+	$(CXX) -c $< -o $@ $(CPPFLAGS)
+dist_file: ${SER_OBJS}
+	$(CXX) dist_file.o ${BUILD_DIR} -o $@ $(LIBHDFS) -lhdfs $(LIBJAVA) -ljvm -lcrypto -lthrift
 clean:
-	rm -rf *.o master
+	rm -rf *.o dist_file

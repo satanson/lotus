@@ -16,15 +16,18 @@ using std::endl;
 
 #include "hdfs.h"
 #include "trans_blockInfo.h"
+#include "organize_data.hpp"
 
 class trans_blockInfoHandler : virtual public memanager::trans_blockInfoIf {
 public:
     trans_blockInfoHandler() { }
     void trans_blockInfo(const memanager::blockInfo& block){
-	cout << block.filePath << "\x20";
-	cout << block.offset << "\x20";
-	cout << block.blockSize << "\x20";
-	cout << block.storeHost << endl;
+	memanager::organize_data orgdata(block.filePath, block.offset, block.blockSize, block.storeHost);
+	orgdata.read_block();
+	// cout << block.filePath << "\x20";
+	// cout << block.offset << "\x20";
+	// cout << block.blockSize << "\x20";
+	// cout << block.storeHost << endl;
     }
 };
 

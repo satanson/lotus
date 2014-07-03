@@ -5,15 +5,15 @@ CPPFLAGS=-I${HDFS_INCLUDE} -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux -
 LIBHDFS= -L/home/chaoyli/hadoop/c++/Linux-amd64-64/lib
 LIBJAVA= -L${JAVA_HOME}/jre/lib/amd64/server/
 
-CLI_OBJS=$(patsubst %.cpp,%.o,$(wildcard *.cpp))
+SER_OBJS=$(patsubst %.cpp,%.o,$(wildcard *.cpp))
 CXX = g++ -std=c++11
 BUILD_DIR=${THRIFT_GEN}/build-in.o
 
-all: slave
+all: recv_block_info
 
 %.o: %.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
-slave: ${CLI_OBJS}
-	$(CXX) $^ ${BUILD_DIR} $(LIBHDFS) -lhdfs $(LIBJAVA) -ljvm -o $@ -lthrift
+recv_block_info: ${SER_OBJS}
+	$(CXX) $^ ${BUILD_DIR} -o $@ $(LIBHDFS) -lhdfs $(LIBJAVA) -ljvm -lcrypto -lthrift
 clean:
-	rm -rf *.o slave
+	rm -rf *.o recv_block_info

@@ -37,7 +37,7 @@ namespace memanager {
     private:
 	int64_t blockSize;
 	int32_t blockNum;
-	Consistent::HashRing<string, string>* ring;
+ 	Consistent::HashRing<string, string>* ring;
     };
     
     dist_file::dist_file(){
