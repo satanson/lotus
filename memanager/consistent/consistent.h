@@ -1,7 +1,4 @@
-//
 //  consistent.h - a consistent hash ring
-//  Copyright (C) 2010 Martin Broadhurst 
-//  www.martinbroadhurst.com
 //
 
 #ifndef CONSISTENT_H
@@ -26,6 +23,7 @@ namespace
   };
 
   template <class T>
+    /*Stringify is to convect type to string*/
     std::string Stringify(const T& t)
     {
       std::ostringstream os;
@@ -59,10 +57,10 @@ namespace Consistent
 
   struct Hash
   {
-
       size_t operator()(const std::string& data) const
       {
-	  MD5_CTX ctx;
+	  /* generate md5 checksum for data, fold it to 32 bit*/
+    	  MD5_CTX ctx;
 	  unsigned char md[17]={'\0'};
 	
 	  MD5((const unsigned char*)(data.c_str()),data.length(),md);

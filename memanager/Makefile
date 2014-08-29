@@ -1,5 +1,5 @@
 
-SUBDIRS=slaver master gen-cpp consistent
+SUBDIRS=slave master gen-cpp consistent
 
 .PHONY: subdir ${SUBDIRS}
 
@@ -8,7 +8,7 @@ subdir: ${SUBDIRS}
 ${SUBDIRS}:
 	make -C $@
 
-slaver: gen-cpp
+slave: gen-cpp
 master: gen-cpp
 
 clean::

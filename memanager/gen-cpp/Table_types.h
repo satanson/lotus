@@ -13,292 +13,206 @@
 #include <thrift/transport/TTransport.h>
 
 #include <thrift/cxxfunctional.h>
-#include "Status_types.h"
 #include "Types_types.h"
+#include "TSchema_types.h"
 
 
 namespace memanager {
 
-struct TAccessLevel {
-  enum type {
-    NONE = 0,
-    READ_WRITE = 1,
-    READ_ONLY = 2,
-    WRITE_ONLY = 3
-  };
-};
+typedef struct _TColumnValue__isset {
+  _TColumnValue__isset() : bool_val(false), byte_val(false), short_val(false), int_val(false), long_val(false), double_val(false), string_val(false), binary_val(false) {}
+  bool bool_val;
+  bool byte_val;
+  bool short_val;
+  bool int_val;
+  bool long_val;
+  bool double_val;
+  bool string_val;
+  bool binary_val;
+} _TColumnValue__isset;
 
-extern const std::map<int, const char*> _TAccessLevel_VALUES_TO_NAMES;
-
-
-class TTableStats {
+class TColumnValue {
  public:
 
-  static const char* ascii_fingerprint; // = "56A59CE7FFAF82BCA8A19FAACDE4FB75";
-  static const uint8_t binary_fingerprint[16]; // = {0x56,0xA5,0x9C,0xE7,0xFF,0xAF,0x82,0xBC,0xA8,0xA1,0x9F,0xAA,0xCD,0xE4,0xFB,0x75};
+  static const char* ascii_fingerprint; // = "15543D4AC23DC11B825EEE5A988F6DEE";
+  static const uint8_t binary_fingerprint[16]; // = {0x15,0x54,0x3D,0x4A,0xC2,0x3D,0xC1,0x1B,0x82,0x5E,0xEE,0x5A,0x98,0x8F,0x6D,0xEE};
 
-  TTableStats() : num_rows(0) {
+  TColumnValue() : bool_val(0), byte_val(0), short_val(0), int_val(0), long_val(0), double_val(0), string_val(), binary_val() {
   }
 
-  virtual ~TTableStats() throw() {}
+  virtual ~TColumnValue() throw() {}
 
-  int64_t num_rows;
+  bool bool_val;
+  int8_t byte_val;
+  int16_t short_val;
+  int32_t int_val;
+  int64_t long_val;
+  double double_val;
+  std::string string_val;
+  std::string binary_val;
 
-  void __set_num_rows(const int64_t val) {
-    num_rows = val;
+  _TColumnValue__isset __isset;
+
+  void __set_bool_val(const bool val) {
+    bool_val = val;
+    __isset.bool_val = true;
   }
 
-  bool operator == (const TTableStats & rhs) const
+  void __set_byte_val(const int8_t val) {
+    byte_val = val;
+    __isset.byte_val = true;
+  }
+
+  void __set_short_val(const int16_t val) {
+    short_val = val;
+    __isset.short_val = true;
+  }
+
+  void __set_int_val(const int32_t val) {
+    int_val = val;
+    __isset.int_val = true;
+  }
+
+  void __set_long_val(const int64_t val) {
+    long_val = val;
+    __isset.long_val = true;
+  }
+
+  void __set_double_val(const double val) {
+    double_val = val;
+    __isset.double_val = true;
+  }
+
+  void __set_string_val(const std::string& val) {
+    string_val = val;
+    __isset.string_val = true;
+  }
+
+  void __set_binary_val(const std::string& val) {
+    binary_val = val;
+    __isset.binary_val = true;
+  }
+
+  bool operator == (const TColumnValue & rhs) const
   {
-    if (!(num_rows == rhs.num_rows))
+    if (__isset.bool_val != rhs.__isset.bool_val)
+      return false;
+    else if (__isset.bool_val && !(bool_val == rhs.bool_val))
+      return false;
+    if (__isset.byte_val != rhs.__isset.byte_val)
+      return false;
+    else if (__isset.byte_val && !(byte_val == rhs.byte_val))
+      return false;
+    if (__isset.short_val != rhs.__isset.short_val)
+      return false;
+    else if (__isset.short_val && !(short_val == rhs.short_val))
+      return false;
+    if (__isset.int_val != rhs.__isset.int_val)
+      return false;
+    else if (__isset.int_val && !(int_val == rhs.int_val))
+      return false;
+    if (__isset.long_val != rhs.__isset.long_val)
+      return false;
+    else if (__isset.long_val && !(long_val == rhs.long_val))
+      return false;
+    if (__isset.double_val != rhs.__isset.double_val)
+      return false;
+    else if (__isset.double_val && !(double_val == rhs.double_val))
+      return false;
+    if (__isset.string_val != rhs.__isset.string_val)
+      return false;
+    else if (__isset.string_val && !(string_val == rhs.string_val))
+      return false;
+    if (__isset.binary_val != rhs.__isset.binary_val)
+      return false;
+    else if (__isset.binary_val && !(binary_val == rhs.binary_val))
       return false;
     return true;
   }
-  bool operator != (const TTableStats &rhs) const {
+  bool operator != (const TColumnValue &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const TTableStats & ) const;
+  bool operator < (const TColumnValue & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-void swap(TTableStats &a, TTableStats &b);
+void swap(TColumnValue &a, TColumnValue &b);
 
+typedef struct _TTableRow__isset {
+  _TTableRow__isset() : colVals(false) {}
+  bool colVals;
+} _TTableRow__isset;
 
-class TColumnStats {
+class TTableRow {
  public:
 
-  static const char* ascii_fingerprint; // = "D5FF58B203C57D2B1EF98050D612DB56";
-  static const uint8_t binary_fingerprint[16]; // = {0xD5,0xFF,0x58,0xB2,0x03,0xC5,0x7D,0x2B,0x1E,0xF9,0x80,0x50,0xD6,0x12,0xDB,0x56};
+  static const char* ascii_fingerprint; // = "0010C6F851B6BC51F346FDABAD206952";
+  static const uint8_t binary_fingerprint[16]; // = {0x00,0x10,0xC6,0xF8,0x51,0xB6,0xBC,0x51,0xF3,0x46,0xFD,0xAB,0xAD,0x20,0x69,0x52};
 
-  TColumnStats() : avg_size(0), max_size(0), num_distinct_values(0), num_nulls(0) {
+  TTableRow() {
   }
 
-  virtual ~TColumnStats() throw() {}
+  virtual ~TTableRow() throw() {}
 
-  double avg_size;
-  int64_t max_size;
-  int64_t num_distinct_values;
-  int64_t num_nulls;
+  std::vector<TColumnValue>  colVals;
 
-  void __set_avg_size(const double val) {
-    avg_size = val;
+  _TTableRow__isset __isset;
+
+  void __set_colVals(const std::vector<TColumnValue> & val) {
+    colVals = val;
   }
 
-  void __set_max_size(const int64_t val) {
-    max_size = val;
-  }
-
-  void __set_num_distinct_values(const int64_t val) {
-    num_distinct_values = val;
-  }
-
-  void __set_num_nulls(const int64_t val) {
-    num_nulls = val;
-  }
-
-  bool operator == (const TColumnStats & rhs) const
+  bool operator == (const TTableRow & rhs) const
   {
-    if (!(avg_size == rhs.avg_size))
-      return false;
-    if (!(max_size == rhs.max_size))
-      return false;
-    if (!(num_distinct_values == rhs.num_distinct_values))
-      return false;
-    if (!(num_nulls == rhs.num_nulls))
+    if (!(colVals == rhs.colVals))
       return false;
     return true;
   }
-  bool operator != (const TColumnStats &rhs) const {
+  bool operator != (const TTableRow &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const TColumnStats & ) const;
+  bool operator < (const TTableRow & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-void swap(TColumnStats &a, TColumnStats &b);
+void swap(TTableRow &a, TTableRow &b);
 
-typedef struct _TColumn__isset {
-  _TColumn__isset() : comment(false), col_stats(false), position(false) {}
-  bool comment;
-  bool col_stats;
-  bool position;
-} _TColumn__isset;
-
-class TColumn {
- public:
-
-  static const char* ascii_fingerprint; // = "46C7DD290D595CB60E9B67D118AACBA9";
-  static const uint8_t binary_fingerprint[16]; // = {0x46,0xC7,0xDD,0x29,0x0D,0x59,0x5C,0xB6,0x0E,0x9B,0x67,0xD1,0x18,0xAA,0xCB,0xA9};
-
-  TColumn() : columnName(), comment(), position(0) {
-  }
-
-  virtual ~TColumn() throw() {}
-
-  std::string columnName;
-   ::memanager::TColumnType columnType;
-  std::string comment;
-  TColumnStats col_stats;
-  int32_t position;
-
-  _TColumn__isset __isset;
-
-  void __set_columnName(const std::string& val) {
-    columnName = val;
-  }
-
-  void __set_columnType(const  ::memanager::TColumnType& val) {
-    columnType = val;
-  }
-
-  void __set_comment(const std::string& val) {
-    comment = val;
-    __isset.comment = true;
-  }
-
-  void __set_col_stats(const TColumnStats& val) {
-    col_stats = val;
-    __isset.col_stats = true;
-  }
-
-  void __set_position(const int32_t val) {
-    position = val;
-    __isset.position = true;
-  }
-
-  bool operator == (const TColumn & rhs) const
-  {
-    if (!(columnName == rhs.columnName))
-      return false;
-    if (!(columnType == rhs.columnType))
-      return false;
-    if (__isset.comment != rhs.__isset.comment)
-      return false;
-    else if (__isset.comment && !(comment == rhs.comment))
-      return false;
-    if (__isset.col_stats != rhs.__isset.col_stats)
-      return false;
-    else if (__isset.col_stats && !(col_stats == rhs.col_stats))
-      return false;
-    if (__isset.position != rhs.__isset.position)
-      return false;
-    else if (__isset.position && !(position == rhs.position))
-      return false;
-    return true;
-  }
-  bool operator != (const TColumn &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const TColumn & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-void swap(TColumn &a, TColumn &b);
-
-typedef struct _TTable__isset {
-  _TTable__isset() : load_status(false), id(false), access_level(false), columns(false), clustering_columns(false), table_stats(false) {}
-  bool load_status;
-  bool id;
-  bool access_level;
-  bool columns;
-  bool clustering_columns;
-  bool table_stats;
-} _TTable__isset;
 
 class TTable {
  public:
 
-  static const char* ascii_fingerprint; // = "8F9D83B52B4DC73301968602CA0884AE";
-  static const uint8_t binary_fingerprint[16]; // = {0x8F,0x9D,0x83,0xB5,0x2B,0x4D,0xC7,0x33,0x01,0x96,0x86,0x02,0xCA,0x08,0x84,0xAE};
+  static const char* ascii_fingerprint; // = "43EC18B8E279F4536A1EBF4E1533AB23";
+  static const uint8_t binary_fingerprint[16]; // = {0x43,0xEC,0x18,0xB8,0xE2,0x79,0xF4,0x53,0x6A,0x1E,0xBF,0x4E,0x15,0x33,0xAB,0x23};
 
-  TTable() : tbl_name(), id(0), access_level((TAccessLevel::type)0) {
+  TTable() {
   }
 
   virtual ~TTable() throw() {}
 
-  std::string tbl_name;
-   ::memanager::TStatus load_status;
-   ::memanager::TTableId id;
-  TAccessLevel::type access_level;
-  std::vector<TColumn>  columns;
-  std::vector<TColumn>  clustering_columns;
-  TTableStats table_stats;
+  std::vector<TTableRow>  rows;
+   ::memanager::TTableSchema schema;
 
-  _TTable__isset __isset;
-
-  void __set_tbl_name(const std::string& val) {
-    tbl_name = val;
+  void __set_rows(const std::vector<TTableRow> & val) {
+    rows = val;
   }
 
-  void __set_load_status(const  ::memanager::TStatus& val) {
-    load_status = val;
-    __isset.load_status = true;
-  }
-
-  void __set_id(const  ::memanager::TTableId val) {
-    id = val;
-    __isset.id = true;
-  }
-
-  void __set_access_level(const TAccessLevel::type val) {
-    access_level = val;
-    __isset.access_level = true;
-  }
-
-  void __set_columns(const std::vector<TColumn> & val) {
-    columns = val;
-    __isset.columns = true;
-  }
-
-  void __set_clustering_columns(const std::vector<TColumn> & val) {
-    clustering_columns = val;
-    __isset.clustering_columns = true;
-  }
-
-  void __set_table_stats(const TTableStats& val) {
-    table_stats = val;
-    __isset.table_stats = true;
+  void __set_schema(const  ::memanager::TTableSchema& val) {
+    schema = val;
   }
 
   bool operator == (const TTable & rhs) const
   {
-    if (!(tbl_name == rhs.tbl_name))
+    if (!(rows == rhs.rows))
       return false;
-    if (__isset.load_status != rhs.__isset.load_status)
-      return false;
-    else if (__isset.load_status && !(load_status == rhs.load_status))
-      return false;
-    if (__isset.id != rhs.__isset.id)
-      return false;
-    else if (__isset.id && !(id == rhs.id))
-      return false;
-    if (__isset.access_level != rhs.__isset.access_level)
-      return false;
-    else if (__isset.access_level && !(access_level == rhs.access_level))
-      return false;
-    if (__isset.columns != rhs.__isset.columns)
-      return false;
-    else if (__isset.columns && !(columns == rhs.columns))
-      return false;
-    if (__isset.clustering_columns != rhs.__isset.clustering_columns)
-      return false;
-    else if (__isset.clustering_columns && !(clustering_columns == rhs.clustering_columns))
-      return false;
-    if (__isset.table_stats != rhs.__isset.table_stats)
-      return false;
-    else if (__isset.table_stats && !(table_stats == rhs.table_stats))
+    if (!(schema == rhs.schema))
       return false;
     return true;
   }

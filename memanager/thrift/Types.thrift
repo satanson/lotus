@@ -61,4 +61,3 @@ struct TUniqueId {
   1: required i64 hi
   2: required i64 lo
 }
-

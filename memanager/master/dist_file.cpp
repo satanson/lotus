@@ -21,22 +21,21 @@ using std::cout;
 using std::cerr;
 using std::endl;
 
-
 namespace memanager {
 
     class dist_file{
     public:
 	dist_file();
 	~dist_file () { delete ring; }
-        dist_file (const dist_file&) = delete;
+	dist_file (const dist_file&) = delete;
 	dist_file& operator = (const dist_file&) = delete;
 
 	bool init(const string& filePath);
 	void trans_blockInfo(const string& host, const memanager::blockInfo& block);
-	bool distribute_file(const string& readPath);
+	bool shuffle_block(const string& readPath);
     private:
-	int64_t blockSize;
-	int32_t blockNum;
+	int64_t blockSize;//default is 64MB
+	int32_t blockNum;//block num of a file
  	Consistent::HashRing<string, string>* ring;
     };
     
@@ -54,6 +53,7 @@ namespace memanager {
     }
 
     bool dist_file::init(const string& readPath){
+	/*this method is plan to connect to hdfs*/
 	hdfsFS fs = hdfsConnect("localhost",9300);
 	int exists = hdfsExists(fs,readPath.c_str());
 	if(exists){
@@ -74,7 +74,7 @@ namespace memanager {
     }
     
     void dist_file::trans_blockInfo(const string& host, const memanager::blockInfo& block){
-
+	/* transfer hdfs block infomation to slave*/
 	boost::shared_ptr<TTransport> socket(new TSocket(host,9191));
 	boost::shared_ptr<TTransport> transport(new TBufferedTransport(socket));
 	boost::shared_ptr<TProtocol> protocol(new TBinaryProtocol(transport));
@@ -90,7 +90,8 @@ namespace memanager {
 	
     }
 
-    bool dist_file::distribute_file(const string& readPath){
+    bool dist_file::shuffle_block(const string& readPath){
+	/* shuffle hdfs block info to slaves*/
 	memanager::blockInfo block;
 	block.__set_filePath(readPath);
 	block.__set_blockSize(this->blockSize);
@@ -104,16 +105,15 @@ namespace memanager {
 	    t.join();
 	    //t.detach();
 	}
-
+	
     }
     
 }
 
 int main(int argc, char*argv[]){
-
     memanager::dist_file fi;
     fi.init(argv[1]);
-    fi.distribute_file(argv[1]);
+    fi.shuffle_block(argv[1]);
     
     return 0;
 }

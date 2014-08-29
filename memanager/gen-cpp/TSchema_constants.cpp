@@ -4,13 +4,13 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "Status_constants.h"
+#include "TSchema_constants.h"
 
 namespace memanager {
 
-const StatusConstants g_Status_constants;
+const TSchemaConstants g_TSchema_constants;
 
-StatusConstants::StatusConstants() {
+TSchemaConstants::TSchemaConstants() {
 }
 
 } // namespace

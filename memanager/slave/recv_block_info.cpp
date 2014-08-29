@@ -1,5 +1,6 @@
+/* this cpp is to receive block info send by master */
+
 #include <thrift/protocol/TBinaryProtocol.h>
-#include <thrift/server/TSimpleServer.h>
 #include <thrift/server/TThreadedServer.h>
 #include <thrift/transport/TServerSocket.h>
 #include <thrift/transport/TBufferTransports.h>
@@ -23,14 +24,13 @@ public:
     trans_blockInfoHandler() { }
     void trans_blockInfo(const memanager::blockInfo& block){
 	memanager::organize_data orgdata(block.filePath, block.offset, block.blockSize, block.storeHost);
-	orgdata.read_block();
+	//orgdata.read_block();
 	// cout << block.filePath << "\x20";
 	// cout << block.offset << "\x20";
 	// cout << block.blockSize << "\x20";
 	// cout << block.storeHost << endl;
     }
 };
-
 
 int main(int argc, char **argv) {
   int port = 9191;

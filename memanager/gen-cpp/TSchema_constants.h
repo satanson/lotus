@@ -4,20 +4,20 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef Data_CONSTANTS_H
-#define Data_CONSTANTS_H
+#ifndef TSchema_CONSTANTS_H
+#define TSchema_CONSTANTS_H
 
-#include "Data_types.h"
+#include "TSchema_types.h"
 
 namespace memanager {
 
-class DataConstants {
+class TSchemaConstants {
  public:
-  DataConstants();
+  TSchemaConstants();
 
 };
 
-extern const DataConstants g_Data_constants;
+extern const TSchemaConstants g_TSchema_constants;
 
 } // namespace
 

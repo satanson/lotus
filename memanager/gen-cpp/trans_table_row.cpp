@@ -4,11 +4,11 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "trans_data.h"
+#include "trans_table_row.h"
 
 namespace memanager {
 
-uint32_t trans_data_trans_data_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t trans_table_row_trans_table_row_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   uint32_t xfer = 0;
   std::string fname;
@@ -30,16 +30,8 @@ uint32_t trans_data_trans_data_args::read(::apache::thrift::protocol::TProtocol*
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->resultSet.read(iprot);
-          this->__isset.resultSet = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->tb.read(iprot);
-          this->__isset.tb = true;
+          xfer += this->tbRow.read(iprot);
+          this->__isset.tbRow = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -56,16 +48,12 @@ uint32_t trans_data_trans_data_args::read(::apache::thrift::protocol::TProtocol*
   return xfer;
 }
 
-uint32_t trans_data_trans_data_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t trans_table_row_trans_table_row_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
-  xfer += oprot->writeStructBegin("trans_data_trans_data_args");
+  xfer += oprot->writeStructBegin("trans_table_row_trans_table_row_args");
 
-  xfer += oprot->writeFieldBegin("resultSet", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->resultSet.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("tb", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->tb.write(oprot);
+  xfer += oprot->writeFieldBegin("tbRow", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->tbRow.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -73,16 +61,12 @@ uint32_t trans_data_trans_data_args::write(::apache::thrift::protocol::TProtocol
   return xfer;
 }
 
-uint32_t trans_data_trans_data_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t trans_table_row_trans_table_row_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
-  xfer += oprot->writeStructBegin("trans_data_trans_data_pargs");
+  xfer += oprot->writeStructBegin("trans_table_row_trans_table_row_pargs");
 
-  xfer += oprot->writeFieldBegin("resultSet", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += (*(this->resultSet)).write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("tb", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += (*(this->tb)).write(oprot);
+  xfer += oprot->writeFieldBegin("tbRow", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->tbRow)).write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -90,7 +74,7 @@ uint32_t trans_data_trans_data_pargs::write(::apache::thrift::protocol::TProtoco
   return xfer;
 }
 
-uint32_t trans_data_trans_data_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t trans_table_row_trans_table_row_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   uint32_t xfer = 0;
   std::string fname;
@@ -117,18 +101,18 @@ uint32_t trans_data_trans_data_result::read(::apache::thrift::protocol::TProtoco
   return xfer;
 }
 
-uint32_t trans_data_trans_data_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t trans_table_row_trans_table_row_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("trans_data_trans_data_result");
+  xfer += oprot->writeStructBegin("trans_table_row_trans_table_row_result");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
 }
 
-uint32_t trans_data_trans_data_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t trans_table_row_trans_table_row_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   uint32_t xfer = 0;
   std::string fname;
@@ -155,20 +139,19 @@ uint32_t trans_data_trans_data_presult::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-void trans_dataClient::trans_data(const TResultSet& resultSet, const  ::memanager::TTable& tb)
+void trans_table_rowClient::trans_table_row(const TTableRow& tbRow)
 {
-  send_trans_data(resultSet, tb);
-  recv_trans_data();
+  send_trans_table_row(tbRow);
+  recv_trans_table_row();
 }
 
-void trans_dataClient::send_trans_data(const TResultSet& resultSet, const  ::memanager::TTable& tb)
+void trans_table_rowClient::send_trans_table_row(const TTableRow& tbRow)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("trans_data", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("trans_table_row", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  trans_data_trans_data_pargs args;
-  args.resultSet = &resultSet;
-  args.tb = &tb;
+  trans_table_row_trans_table_row_pargs args;
+  args.tbRow = &tbRow;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -176,7 +159,7 @@ void trans_dataClient::send_trans_data(const TResultSet& resultSet, const  ::mem
   oprot_->getTransport()->flush();
 }
 
-void trans_dataClient::recv_trans_data()
+void trans_table_rowClient::recv_trans_table_row()
 {
 
   int32_t rseqid = 0;
@@ -196,12 +179,12 @@ void trans_dataClient::recv_trans_data()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("trans_data") != 0) {
+  if (fname.compare("trans_table_row") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  trans_data_trans_data_presult result;
+  trans_table_row_trans_table_row_presult result;
   result.read(iprot_);
   iprot_->readMessageEnd();
   iprot_->getTransport()->readEnd();
@@ -209,7 +192,7 @@ void trans_dataClient::recv_trans_data()
   return;
 }
 
-bool trans_dataProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
+bool trans_table_rowProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
   if (pfn == processMap_.end()) {
@@ -228,37 +211,37 @@ bool trans_dataProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* ip
   return true;
 }
 
-void trans_dataProcessor::process_trans_data(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void trans_table_rowProcessor::process_trans_table_row(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("trans_data.trans_data", callContext);
+    ctx = this->eventHandler_->getContext("trans_table_row.trans_table_row", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "trans_data.trans_data");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "trans_table_row.trans_table_row");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "trans_data.trans_data");
+    this->eventHandler_->preRead(ctx, "trans_table_row.trans_table_row");
   }
 
-  trans_data_trans_data_args args;
+  trans_table_row_trans_table_row_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "trans_data.trans_data", bytes);
+    this->eventHandler_->postRead(ctx, "trans_table_row.trans_table_row", bytes);
   }
 
-  trans_data_trans_data_result result;
+  trans_table_row_trans_table_row_result result;
   try {
-    iface_->trans_data(args.resultSet, args.tb);
+    iface_->trans_table_row(args.tbRow);
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "trans_data.trans_data");
+      this->eventHandler_->handlerError(ctx, "trans_table_row.trans_table_row");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("trans_data", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("trans_table_row", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -267,24 +250,24 @@ void trans_dataProcessor::process_trans_data(int32_t seqid, ::apache::thrift::pr
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "trans_data.trans_data");
+    this->eventHandler_->preWrite(ctx, "trans_table_row.trans_table_row");
   }
 
-  oprot->writeMessageBegin("trans_data", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("trans_table_row", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "trans_data.trans_data", bytes);
+    this->eventHandler_->postWrite(ctx, "trans_table_row.trans_table_row", bytes);
   }
 }
 
-::boost::shared_ptr< ::apache::thrift::TProcessor > trans_dataProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
-  ::apache::thrift::ReleaseHandler< trans_dataIfFactory > cleanup(handlerFactory_);
-  ::boost::shared_ptr< trans_dataIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
-  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new trans_dataProcessor(handler));
+::boost::shared_ptr< ::apache::thrift::TProcessor > trans_table_rowProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
+  ::apache::thrift::ReleaseHandler< trans_table_rowIfFactory > cleanup(handlerFactory_);
+  ::boost::shared_ptr< trans_table_rowIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
+  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new trans_table_rowProcessor(handler));
   return processor;
 }
 } // namespace
